@@ -6,11 +6,11 @@ import Button from './Button'
 // import static content
 import Logo from '../images/bks-logo.png'
 
-export default function Navbar({ openModal }) {
+export default function Navbar({openModal}) {
   return (
     <div className="bg-white p-4 md:fixed w-full z-50 shadow-md">
         <div className="container px-4 flex flex-col md:flex-row gap-y-4 items-center align-center max-w-screen-xl mx-auto mb-2 md:mb-0">
-            <a href="#" className="md:mr-auto w-20 relative md:mb-0 mb-4">
+            <a className="md:mr-auto w-20 relative md:mb-0 mb-4">
                 <img src={Logo} alt="" className="w-full" />
             </a>
             <ul className="flex mx-4 place-content-center md:place-content-end w-full md:mb-0 mb-4">
@@ -22,7 +22,7 @@ export default function Navbar({ openModal }) {
               bg="bg-sky-700"
               text="text-slate-100"
               hoverBg="bg-sky-600"
-              onClick={() => openModal()}>
+              clickEvent={openModal}>
               Kontaktiere Uns
             </Button>
         </div>

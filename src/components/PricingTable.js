@@ -54,7 +54,7 @@ export default function PricingTable( {openModal}) {
                             bg="bg-zinc-200"
                             hoverBg="bg-sky-700"
                             hoverText="text-slate-100"
-                            onClick={openModal}
+                            clickEvent={openModal}
                         >Buche Jetzt</Button>
                     </div>
                 ))}

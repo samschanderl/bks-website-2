@@ -13,7 +13,7 @@ function App() {
 
   function openModal() {
     // open Modal
-    // setShowModal(true);
+    setShowModal(true);
     console.log('opening modal...')
   }
 
@@ -21,6 +21,7 @@ function App() {
     // close Modal
     setShowModal(false);
     console.log('closing modal...')
+    console.log(showModal)
   }
 
   return (
@@ -30,7 +31,8 @@ function App() {
           <PricingTable openModal={openModal}/>
           {showModal && (
               <Modal closeModal={closeModal}>
-                <p>Get In Touch</p>
+                <h2 className="text-xl mb-4">Schreiben Sie Uns!</h2>
+                <p className="text-sm italic mb-4">Würden Sie gerne unsere Küche mieten?</p>
                 <ContactForm />
               </Modal>
           )}
