@@ -1,22 +1,47 @@
-import { useRef} from 'react';
+import { useState, useRef} from 'react';
 import emailjs from '@emailjs/browser';
 
 // import components
 import Button from './Button';
 
-export default function ContactForm() {
+export default function ContactForm({closeModal}) {
+    const [formSuccess, setFormSuccess] = useState(false);
+    const [ formError, setFormError ] = useState(false);
+
     const formRef = useRef();
 
     function submitForm(e) {
-        //
-        e.preventDefault()
+        e.preventDefault();
+        setFormSuccess(false);
+        setFormError(false);
         console.log('submitting form')
 
-        emailjs.sendForm()
+        emailjs.sendForm(
+            process.env.REACT_APP_EMAILJS_SERVICE_ID, 
+            process.env.REACT_APP_EMAILJS_TEMPLATE_ID, 
+            formRef.current, 
+            // 'ljlSDALSllJJLASDA'
+            process.env.REACT_APP_EMAILJS_PUBLIC_API_KEY
+            )
         .then(
-        (result) => console.log('Success. ', result),
-        (error) => console.log(error.text)
+        (result) => {
+            console.log('Success. ', result, formRef)
+            setFormSuccess(true);
+            clearForm();
+            },
+        (error) => {
+            setFormError(true);
+            console.log(error.text, process.env.REACT_APP_EMAIL_PUBLIC_API_KEY)}
         )
+    }
+
+    function clearForm() {
+        for (let i = 0; i < 7; i++) {
+            formRef.current[i].value = ''
+        }
+        setTimeout(() => {
+            setFormSuccess(false)
+        }, 5000)
     }
 
 
@@ -25,6 +50,12 @@ export default function ContactForm() {
 
         <form ref={formRef} onSubmit={submitForm}>
             <fieldset className="flex flex-row flex-wrap justify-center">
+                {formSuccess && 
+                <p className="text-green-700 bg-green-200 mb-4 p-2 rounded-sm border w-full">Vielen Dank! Wir werden uns bald bei Ihnen melden.</p>
+                }
+                {formError && 
+                <p className="text-red-700 bg-red-200 mb-4 p-2 rounded-sm border w-full">Es gab einen Fehler - bitte versuchen Sie es erneut.</p>
+                }
                 <div className="Field mb-2 p-1 w-3/6">
                     <label className="block text-left mb-2">Vorname</label>
                     <input className="bg-slate-100 w-full p-1" name="fname" required/>
@@ -61,6 +92,7 @@ export default function ContactForm() {
                     >
                     Submit
                 </Button>
+                <button onClick={closeModal}>Close Modal</button>
 
             </fieldset>
         </form>
