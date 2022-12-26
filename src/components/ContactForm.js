@@ -84,15 +84,10 @@ export default function ContactForm({closeModal}) {
                     <textarea className="bg-slate-100 w-full p-1" rows="4" name="message" required/>
                 </div>
                 <Button
-                    className="w-full"
-                    bg="bg-sky-700"
-                    text="text-slate-100"
-                    hoverBg="bg-sky-600"
                     width="w-full"
                     >
                     Submit
                 </Button>
-                <button onClick={closeModal}>Close Modal</button>
 
             </fieldset>
         </form>

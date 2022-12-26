@@ -5,18 +5,25 @@ import Img1 from '../images/Img1.jpg';
 import Img2 from '../images/Img2.jpg';
 import Img3 from '../images/Img3.jpg';
 import Img4 from '../images/Img4.jpg';
+import Img5 from '../images/Img5.jpg';
+import Img6 from '../images/Img6.jpg';
 
 export default function ImgGallery() {
     const Images = [
         {
-            src: Img1,
-            title: 'Großzügige Sitzecke',
-            text: 'Tisch mit Platz für bis zu 12 Personen. Kaffee und Tee inklusive.'
+            src: Img5,
+            title: 'Perfekt für Video & Foto',
+            text: 'Lange Kochinsel, 2 Induktions-Herde (vorne und hinten), Befestigungs-Stange für Aufnahmen von oben.'
         },
         {
             src: Img2,
             title: 'Gut ausgeleuchtet',
             text: 'Indirekte Lichtleisten im Hintergrund (dimmbar), Strahler auf die Wand, LED-Panel über der Kochinsel.'
+        },
+        {
+            src: Img1,
+            title: 'Großzügige Sitzecke',
+            text: 'Tisch mit Platz für bis zu 12 Personen, direkt neben dem Kochbereich. Kaffee und Tee inklusive.'
         },
         {
             src: Img3,
@@ -27,32 +34,50 @@ export default function ImgGallery() {
             src: Img4,
             title: 'Mit vollständiger Küchenausstattung',
             text: 'Alle Kochgeräte und Utensilien sind vorhanden, damit Sie nichts mehr mitbringen müssen.'
+        },
+        {
+            src: Img6,
+            title: 'Einheitliches Retro-Design',
+            text: 'Die Küchenelemente, Geräte und Accessories sind sowohl farblich als auch stilistisch aufeinander abgestimmt.'
         }
     ]
     let [current, setCurrent] = useState(0);
     let largeImage = Images[current].src;
 
     function showImage(index) {
-        setCurrent(index)
+        setCurrent(index);
+        addFilter(index);
+    };
+
+    function addFilter(index) {
+        //
+        let image = Images.filter((img, idx) => {return idx === index})
+        // image.style
+        console.log(image[0], index)
+    };
+
+    function removeFilter(index) {
+        //
     }
 
   return (
-    <div className="ImgGallery bg-white py-8">
-        <h2 className="text-2xl mb-4 ">Image Gallery</h2>
+    <div id="ImgGallery" className="ImgGallery bg-white py-8 mt-10 scroll-mt-20">
+        <h2 className="md:text-4xl text-2xl w-full my-8 text-neutral-800 font-bold">Die Küche</h2>
         <div className="container max-w-screen-md mx-auto px-4">
             <div className="MainImg relative">
                 <img className="transition duration-1000" src={largeImage}/>
-                <div className="absolute bottom-0 left-0 bg-gradient-to-b from-transparent to-slate-700 w-full md:h-2/6 h-3/6"></div>
+                <div className="absolute bottom-0 left-0 bg-gradient-to-b from-transparent to-neutral-700 w-full md:h-2/6 h-3/6 opacity-80"></div>
                 <p className="absolute md:bottom-20 bottom-14 left-4 md:text-4xl text-lg font-bold text-white">{Images[current].title}</p>
                 <p className="absolute bottom-4 left-4 md:text-lg text-xs font-bold text-white text-left">{Images[current].text}</p>
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid md:grid-cols-6 grid-cols-3 md:gap-2 md:my-2 gap-1 my-1">
                 {Images && Images.map((img, index) => (
                     <img 
                         key={index}
                         src={img.src} 
-                        className="my-2 hover:cursor-pointer" 
-                        onClick={() => showImage(index)}/>
+                        className="hover:cursor-pointer" 
+                        onClick={() => showImage(index)}
+                    />
                 ))}
             </div>
         </div>
