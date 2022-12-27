@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // import images
 import Img1 from '../images/Img1.jpg';
@@ -9,6 +9,8 @@ import Img5 from '../images/Img5.jpg';
 import Img6 from '../images/Img6.jpg';
 
 export default function ImgGallery() {
+    const imgRef = useRef();
+
     const Images = [
         {
             src: Img5,
@@ -46,19 +48,28 @@ export default function ImgGallery() {
 
     function showImage(index) {
         setCurrent(index);
+        removeFilter();
         addFilter(index);
     };
 
     function addFilter(index) {
-        //
-        let image = Images.filter((img, idx) => {return idx === index})
-        // image.style
-        console.log(image[0], index)
+       // e.target.classList.add('isActive');
+       imgRef.current.children[index].classList.add('isActive');
+
+
     };
 
-    function removeFilter(index) {
-        //
+    function removeFilter() {
+        let children = imgRef.current.children
+        // remove isActive class from each image
+        for (let child of children) {
+            child.classList.remove('isActive');
+        }
     }
+
+    useEffect(() => {
+        addFilter(0);
+    }, [])
 
   return (
     <div id="ImgGallery" className="ImgGallery bg-white py-8 mt-10 scroll-mt-20">
@@ -70,13 +81,13 @@ export default function ImgGallery() {
                 <p className="absolute md:bottom-20 bottom-14 left-4 md:text-4xl text-lg font-bold text-white">{Images[current].title}</p>
                 <p className="absolute bottom-4 left-4 md:text-lg text-xs font-bold text-white text-left">{Images[current].text}</p>
             </div>
-            <div className="grid md:grid-cols-6 grid-cols-3 md:gap-2 md:my-2 gap-1 my-1">
+            <div ref={imgRef} className="grid md:grid-cols-6 grid-cols-3 md:gap-2 md:my-2 gap-1 my-1">
                 {Images && Images.map((img, index) => (
                     <img 
                         key={index}
                         src={img.src} 
                         className="hover:cursor-pointer" 
-                        onClick={() => showImage(index)}
+                        onClick={(e) => {showImage(index)}}
                     />
                 ))}
             </div>

@@ -33,7 +33,7 @@ export default function PricingTable( {openModal}) {
     ]
 
   return (
-    <div id="PricingTable" className="pricing-table my-6 py-4 bg-neutral-100 scroll-mt-20">
+    <div id="PricingTable" className="pricing-table my-6 py-4 bg-gradient-to-br from-neutral-200 to-neutral-100 scroll-mt-20">
         <div className="container flex flex-col flex-wrap mx-auto md:flex-row p-4 justify-center max-w-screen-lg gap-4">
             <h2 className="md:text-4xl text-2xl w-full my-8 text-neutral-800 font-bold">Unsere Preise</h2>
             {pricingInfo.map(item => (

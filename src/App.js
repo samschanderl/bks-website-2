@@ -10,6 +10,7 @@ import PricingTable from './components/PricingTable';
 import Footer from './components/Footer';
 import Modal from './components/Modal';
 import { useEffect, useRef, useState } from 'react';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [showModal, setShowModal ] = useState(false);
@@ -33,6 +34,7 @@ function App() {
           <Navbar navRef={navRef} navHeight={navHeight} setNavHeight={setNavHeight} openModal={openModal}/>
           <Hero navHeight={navHeight} openModal={openModal}/>
           <ImgGallery />
+          <AboutUs />
           <Slider />
           <PricingTable openModal={openModal}/>
           <Footer />
