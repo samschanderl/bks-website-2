@@ -1,7 +1,8 @@
 import React from 'react';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 // import images
-import ImgHero1 from '../images/ImgHero1.jpg';
+import ImgHero1 from '../images/min/ImgHero1-min.jpg';
 import Button from './Button';
 
 export default function Hero({navHeight, openModal}) {
@@ -23,7 +24,14 @@ export default function Hero({navHeight, openModal}) {
             >Schreiben Sie Uns</Button>
         </div>
         <div className="absolute w-full h-full bg-gradient-to-br from-slate-500 to-neutral-900 z-10 opacity-40"></div>
-        <img src={ImgHero1} alt="Mietküche in Berlin" className="absolute w-full h-full top-o left-0 z-0 object-cover"/>
+        {/* <img src={ImgHero1} alt="Mietküche in Berlin" className="absolute w-full h-full top-o left-0 z-0 object-cover"/> */}
+        <LazyLoadImage 
+        src={ImgHero1}
+        width={920}
+        className="absolute w-full h-full top-o left-0 z-0 object-cover"
+        // width={600} height={400}
+        alt="Image Alt"
+        />
     </header>
   )
 }

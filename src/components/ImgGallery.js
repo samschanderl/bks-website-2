@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 // import images
-import Img1 from '../images/Img1.jpg';
-import Img2 from '../images/Img2.jpg';
-import Img3 from '../images/Img3.jpg';
-import Img4 from '../images/Img4.jpg';
-import Img5 from '../images/Img5.jpg';
-import Img6 from '../images/Img6.jpg';
+import Img1 from '../images/min/Img1-min.jpg';
+import Img2 from '../images/min/Img2-min.jpg';
+import Img3 from '../images/min/Img3-min.jpg';
+import Img4 from '../images/min/Img4-min.jpg';
+import Img5 from '../images/min/Img5-min.jpg';
+import Img6 from '../images/min/Img6-min.jpg';
 
 export default function ImgGallery() {
     const imgRef = useRef();
@@ -76,20 +77,27 @@ export default function ImgGallery() {
         <h2 className="md:text-4xl text-2xl w-full my-8 text-neutral-800 font-bold">Die Küche</h2>
         <div className="container max-w-screen-md mx-auto px-4">
             <div className="MainImg relative">
-                <img className="transition duration-1000" src={largeImage} alt=""/>
+                {/* <img className="transition duration-1000" loading='lazy' src={largeImage} alt=""/> */}
+                <LazyLoadImage 
+                src={largeImage}
+                className="transition duration-1000" 
+                width={1280}
+                alt="Image Alt"
+                />
                 <div className="absolute bottom-0 left-0 bg-gradient-to-b from-transparent to-neutral-700 w-full md:h-2/6 h-3/6 opacity-80"></div>
                 <p className="absolute md:bottom-20 bottom-14 left-4 md:text-4xl text-lg font-bold text-white">{Images[current].title}</p>
                 <p className="absolute bottom-4 left-4 md:text-lg text-xs font-bold text-white text-left">{Images[current].text}</p>
             </div>
             <div ref={imgRef} className="grid md:grid-cols-6 grid-cols-3 md:gap-2 md:my-2 gap-1 my-1">
                 {Images && Images.map((img, index) => (
-                    <img 
-                        key={index}
-                        src={img.src} 
-                        alt={img.title}
-                        className="hover:cursor-pointer" 
-                        onClick={(e) => {showImage(index)}}
-                    />
+                    <LazyLoadImage 
+                    key={index}
+                    src={img.src} 
+                    alt={img.title}
+                    className="hover:cursor-pointer" 
+                    onClick={(e) => {showImage(index)}}
+                    width={300}
+                  />
                 ))}
             </div>
         </div>

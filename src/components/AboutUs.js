@@ -1,8 +1,9 @@
 import React from 'react';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 // import image
-import ImgLukas from '../images/ImgLukas.jpg';
-import ImgSamuel from '../images/ImgSamuel.jpg';
+import ImgLukas from '../images/min/ImgLukas-min.jpg';
+import ImgSamuel from '../images/min/ImgSamuel-min.jpg';
 
 // import icons
 import {BsCheck} from 'react-icons/bs'
@@ -14,15 +15,26 @@ export default function AboutUs({openModal}) {
         <div className="container max-w-screen-xl grid md:grid-cols-2 mx-auto gap-3 py-4 px-2">
             <div className="bg-white p-4 mx-2">
                 <div className="flex gap-4 mb-6">
-                    <img className="w-3/6" src={ImgLukas} alt="lukas"/>
-                    <img className="w-3/6" src={ImgSamuel} alt="samuel"/>
+                    <LazyLoadImage 
+                        src={ImgLukas}
+                        className="w-3/6"
+                        width={500}
+                        alt="lukas"
+                    />
+                    <LazyLoadImage 
+                        src={ImgSamuel}
+                        className="w-3/6"
+                        width={500}
+                        alt="lukas"
+                    />
+
                 </div>
                 <div className="p-6">
                     <p className="text-2xl italic font-bold">Wir heißen Sie herzlich willkommen!</p>
                     <br />
                     <p className="italic">Sind Sie auf der Suche nach einer hochwertigen Studioküche?</p>
                     <br />
-                    <p className="italic">Dann schreiben Sie uns doch einfach oder rufen Sie uns an!”</p>
+                    <p className="italic">Dann schreiben Sie uns doch einfach oder rufen Sie uns an!</p>
                     <br />
                     <p className="font-bold">Lukas & Samuel - Inhaber Berlin Kitchen Studio</p>
                 </div>
