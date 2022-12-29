@@ -53,12 +53,12 @@ export default function Slider() {
         {
             id: 5,
             img: SlideImg5,
-            text: 'Optimiert für Foto & Video'
+            text: 'Liebevolle Dekoration'
         },
         {
             id: 6,
             img: SlideImg6,
-            text: 'Liebevolle Dekoration'
+            text: 'Optimiert für Foto & Video'
         },
         {
             id: 7,
@@ -73,7 +73,7 @@ export default function Slider() {
         <div ref={sliderRef} className="keen-slider max-w-screen-lg mx-auto">
             {slides && slides.map(slide => (
                 <div key={slide.id} className="keen-slider__slide number-slide1 bg-zinc-100 grid">
-                    <img src={slide.img} className="h-full object-cover"/>
+                    <img src={slide.img} alt={slide.text} className="h-full object-cover"/>
                     <p className="absolute bottom-2 left-2 p-2 lg:text-2xl text-lg text-white z-10 font-bold text-left">{slide.text}</p>
                     <div className=" absolute left-0 bottom-0 z-5 h-3/6 w-full bg-gradient-to-t from-neutral-900 opacity-50"></div>
                 </div>

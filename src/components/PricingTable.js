@@ -3,7 +3,7 @@ import React from 'react'
 // import components
 import Button from './Button'
 
-// import 
+// import icons
 import {BsCheck} from 'react-icons/bs'
 
 export default function PricingTable( {openModal}) {

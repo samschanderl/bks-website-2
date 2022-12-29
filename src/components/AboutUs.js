@@ -1,16 +1,34 @@
 import React from 'react';
 
+// import image
+import ImgLukas from '../images/ImgLukas.jpg';
+import ImgSamuel from '../images/ImgSamuel.jpg';
+
 // import icons
 import {BsCheck} from 'react-icons/bs'
+import Button from './Button';
 
-export default function AboutUs() {
+export default function AboutUs({openModal}) {
   return (
     <div className="bg-gradient-to-br from-neutral-200 to-neutral-100 py-4">
         <div className="container max-w-screen-xl grid md:grid-cols-2 mx-auto gap-3 py-4 px-2">
-            <div className="bg-white p-2 mx-2">
-                Image Here
+            <div className="bg-white p-4 mx-2">
+                <div className="flex gap-4 mb-6">
+                    <img className="w-3/6" src={ImgLukas} alt="lukas"/>
+                    <img className="w-3/6" src={ImgSamuel} alt="samuel"/>
+                </div>
+                <div className="p-6">
+                    <p className="text-2xl italic font-bold">Wir heißen Sie herzlich willkommen!</p>
+                    <br />
+                    <p className="italic">Sind Sie auf der Suche nach einer hochwertigen Studioküche?</p>
+                    <br />
+                    <p className="italic">Dann schreiben Sie uns doch einfach oder rufen Sie uns an!”</p>
+                    <br />
+                    <p className="font-bold">Lukas & Samuel - Inhaber Berlin Kitchen Studio</p>
+                </div>
+                <Button clickEvent={openModal} className="mb-10">Schreiben Sie Uns!</Button>
             </div>
-            <div className="p-2 mx-2 bg-white text-left p-4">
+            <div className="p-2 mx-2 bg-white text-left py-4 px-8">
                 <p>Wir sind das Berlin Kitchen Studio - eine vollständig ausgestattete Mietküche im Herzen Berlins.</p>
                 <br />
                 <p>Als Gründer einer Online-Kochschule ist uns schnell bewusst geworden, wie schwierig es ist, eine Küche zu finden, die in Videos einfach toll aussieht.</p>
